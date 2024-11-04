@@ -1,0 +1,68 @@
+<Message>
+    <Header>
+        <MessageID>98765-43210</MessageID>
+        <Timestamp>2024-11-04T08:30:00Z</Timestamp>
+        <Source application="AdvancedApp" version="5.2">
+            <System>ExternalSystem</System>
+            <Environment>Testing</Environment>
+            <Region>NorthAmerica</Region>
+        </Source>
+        <Destination application="TargetApp" version="3.7">
+            <System>DataProcessingSystem</System>
+            <Environment>Development</Environment>
+        </Destination>
+    </Header>
+    <Body>
+        <UserInfo>
+            <UserID>U123456</UserID>
+            <UserName>John Doe</UserName>
+            <Contact>
+                <Email>johndoe@example.com</Email>
+                <Phone type="mobile">+1234567890</Phone>
+            </Contact>
+            <Address>
+                <Street>Main Street 123</Street>
+                <City>Exampletown</City>
+                <State>EX</State>
+                <Zip>12345</Zip>
+                <Country>Exampleland</Country>
+            </Address>
+            <Preferences>
+                <Language>English</Language>
+                <Timezone>UTC-5</Timezone>
+                <Notification>
+                    <EmailNotify>true</EmailNotify>
+                    <SMSNotify>false</SMSNotify>
+                </Notification>
+            </Preferences>
+        </UserInfo>
+        <Transaction>
+            <TransactionID>TRX-54321</TransactionID>
+            <Date>2024-11-03</Date>
+            <Amount currency="USD">1250.75</Amount>
+            <Type>Purchase</Type>
+            <Items>
+                <Item>
+                    <ItemID>I1234</ItemID>
+                    <Description>Gadget</Description>
+                    <Quantity>2</Quantity>
+                    <Price>499.99</Price>
+                </Item>
+                <Item>
+                    <ItemID>I5678</ItemID>
+                    <Description>Accessory</Description>
+                    <Quantity>1</Quantity>
+                    <Price>250.77</Price>
+                </Item>
+            </Items>
+            <PaymentMethod>CreditCard</PaymentMethod>
+            <Status>Completed</Status>
+        </Transaction>
+    </Body>
+    <Footer>
+        <ResponseCode>200</ResponseCode>
+        <ResponseMessage>Transaction Successful</ResponseMessage>
+        <ProcessingTime>2.34s</ProcessingTime>
+        <Signature algorithm="SHA256">abcd1234efgh5678ijkl9101mnopqrstuvwx2345yz</Signature>
+    </Footer>
+</Message>

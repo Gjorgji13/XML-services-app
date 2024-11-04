@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Advanced XML Processing App</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script>
+        function toggleNewTagName() {
+            const preprocessSelect = document.getElementById('preprocess');
+            const newTagNameInput = document.getElementById('newTagName');
+            newTagNameInput.style.display = preprocessSelect.value === 'rename_tag' ? 'block' : 'none';
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Advanced XML Processing App</h1>
+        <form id="xmlForm" method="POST" action="/process_xml" enctype="multipart/form-data">
+            <label for="xmlInput">Enter XML Request:</label>
+            <textarea id="xmlInput" name="xml_data" rows="10" placeholder="Paste XML here..." required></textarea>
+
+            <label for="xmlFile">Or Upload XML File:</label>
+            <input type="file" id="xmlFile" name="xml_file" accept=".xml"/>
+
+            <label for="preprocess">Choose Preprocessing:</label>
+            <select id="preprocess" name="preprocess_option" required onchange="toggleNewTagName()">
+                <option value="">Select an option</option>
+                <option value="strip_whitespace">Strip Whitespace</option>
+                <option value="remove_tags">Remove Tags by XPath</option>
+                <option value="extract_values">Extract Values by XPath</option>
+                <option value="rename_tag">Rename Tags by XPath</option>
+                <option value="transform_to_text">Transform to Text</option>
+            </select>
+
+            <label for="xpathInput">XPath Expressions (one per line, optional):</label>
+            <textarea id="xpathInput" name="xpath_expression" rows="4" placeholder="e.g., .//PostalCode&#10;.//AnotherTag" title="Enter multiple XPath expressions, one per line."></textarea>
+
+            <label for="newTagName" style="display: none;">New Tag Name (for Rename Tag option):</label>
+            <input type="text" id="newTagName" name="new_tag_name" placeholder="NewTagName" title="Provide the new tag name for renaming." style="display: none;"/>
+
+            <!-- New XSD Path Input Field -->
+            <label for="xsdPath">XSD Path (for XML Validation):</label>
+            <input type="text" id="xsdPath" name="xsdPath" placeholder="Enter path to XSD file for validation" />
+
+
+            <button type="submit">Submit</button>
+
+            <!-- New Buttons for Additional Features -->
+            <button type="button" onclick="validateXML()">Validate XML</button><br>
+            <button type="button" onclick="convertToJson()">Convert to JSON</button><br>
+            <button type="button" onclick="cleanXML()">Clean and Sanitize XML</button><br>
+
+        </form>
+
+        <div id="response">
+            <h3>Response:</h3>
+            <pre id="responseContent">The response will be displayed here.</pre>
+        </div>
+    </div>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

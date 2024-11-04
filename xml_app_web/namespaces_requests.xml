@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:ns="http://www.example.com/ns"
+          xmlns:ord="http://www.example.com/order"
+          xmlns:cust="http://www.example.com/customer">
+
+  <ns:header>
+    <ns:messageID>msg-001</ns:messageID>
+    <ns:timestamp>2024-11-04T12:30:00Z</ns:timestamp>
+    <ns:version>1.0</ns:version>
+  </ns:header>
+
+  <ns:body>
+    <ord:order xmlns:prod="http://www.example.com/product">
+      <ord:orderID>ORD-123456789</ord:orderID>
+      <ord:orderDate>2024-11-04</ord:orderDate>
+      <ord:customer>
+        <cust:customerID>CUST-001</cust:customerID>
+        <cust:fullName>Jane Smith</cust:fullName>
+        <cust:contact>
+          <cust:email>jane.smith@example.com</cust:email>
+          <cust:phone>+1987654321</cust:phone>
+        </cust:contact>
+        <cust:address>
+          <cust:street><![CDATA[456 Elm St <Unit 7>]]></cust:street>
+          <cust:city>Springfield</cust:city>
+          <cust:state>IL</cust:state>
+          <cust:postalCode>62701</cust:postalCode>
+          <cust:country>USA</cust:country>
+        </cust:address>
+      </ord:customer>
+
+      <ord:items>
+        <prod:item productID="PROD-001" quantity="2">
+          <prod:name>Deluxe Widget</prod:name>
+          <prod:price currency="USD">29.99</prod:price>
+          <prod:description><![CDATA[High-quality widget designed for durability and performance.]]></prod:description>
+        </prod:item>
+        <prod:item productID="PROD-002" quantity="1">
+          <prod:name>Super Gadget</prod:name>
+          <prod:price currency="USD">99.99</prod:price>
+          <prod:description><![CDATA[Latest technology gadget with advanced features.]]></prod:description>
+          <prod:customizations>
+            <prod:customization option="color">Red</prod:customization>
+            <prod:customization option="accessories">Extra battery</prod:customization>
+          </prod:customizations>
+        </prod:item>
+      </ord:items>
+
+      <ord:payment>
+        <ord:method>CreditCard</ord:method>
+        <ord:cardDetails>
+          <ord:cardNumber>**** **** **** 4321</ord:cardNumber>
+          <ord:expiryDate>11/25</ord:expiryDate>
+          <ord:cardHolder>Jane Smith</ord:cardHolder>
+        </ord:cardDetails>
+      </ord:payment>
+
+      <ord:shipping>
+        <ord:method>Standard</ord:method>
+        <ord:trackingNumber>TRACK-123456</ord:trackingNumber>
+        <ord:estimatedDelivery>2024-11-10</ord:estimatedDelivery>
+      </ord:shipping>
+
+      <ord:comments>
+        <![CDATA[Please handle with care and deliver to the back door.]]>
+      </ord:comments>
+    </ord:order>
+
+    <ns:status>
+      <ns:code>Processing</ns:code>
+      <ns:lastUpdated>2024-11-04T12:35:00Z</ns:lastUpdated>
+      <ns:history>
+        <ns:event>
+          <ns:timestamp>2024-11-04T12:30:00Z</ns:timestamp>
+          <ns:description>Order received and under processing.</ns:description>
+        </ns:event>
+        <ns:event>
+          <ns:timestamp>2024-11-04T12:32:00Z</ns:timestamp>
+          <ns:description>Payment confirmed.</ns:description>
+        </ns:event>
+      </ns:history>
+    </ns:status>
+  </ns:body>
+
+  <ns:footer>
+    <ns:remarks>
+      <![CDATA[All transactions are subject to verification and approval. For support, contact support@example.com.]]>
+    </ns:remarks>
+  </ns:footer>
+</document>
